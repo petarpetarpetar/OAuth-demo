@@ -1,0 +1,36 @@
+.background {
+	width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+	background-color: white;
+}
+
+.btn-group {
+    margin: auto;
+    width: 30%;
+    border: 3px solid green;
+    padding: 10px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+button {
+    background-color: #ebf5f1; /* Green background */
+    border: 1px solid grey; /* Green border */
+    margin-bottom: 10px;
+    margin-top: 10px;
+    color: black; /* White text */
+    padding: 10px 24px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    width: 100%; /* Set a width if needed */
+    display: block; /* Make the buttons appear below each other */
+}
+
+  
+.btn-group button:hover {
+    background-color: rgb(141, 140, 140);
+}

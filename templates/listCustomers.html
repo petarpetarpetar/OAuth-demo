@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/listCustomers.css') }}">
+
+    <script>
+        function get_campaings(resource_name) {
+            user_id = resource_name.split('/')[1]
+
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.open("GET", "http://localhost:5000/getCampaigns/" + user_id, false); // false for synchronous request
+            xmlHttp.send(null);
+
+            array = JSON.parse(xmlHttp.responseText)
+            document.getElementById('results').innerHTML = ""
+            array.forEach(element =>
+                document.getElementById('results').innerHTML += `<tr><td>${element}</td></tr>`
+            );
+            if (array.length == 0) {
+                document.getElementById('results').innerHTML += `<tr><td>System: Customer has no campaigns!</td></tr>`
+            }
+        }
+    </script>
+</head>
+
+<body class="background">
+
+    <div class="customers-list">
+        <table class="list">
+            <tr>
+                <th>customer id</th>
+                <th>get campaigns </th>
+            </tr>
+
+            {%- for customer in customers %}
+            <tr>
+                <td>{{ customer }}</td>
+                <td><button onclick="get_campaings( '{{ customer | safe }}' )">test</button></td>
+            </tr>
+            {% endfor %}
+
+
+        </table>
+        <table id="results">
+
+        </table>
+    </div>
+
+</body>
+
+</html>
